@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Team Meeting",
+        "date": "2025-06-15",
+        "category": "blue"
+    },
+    {
+        "title": "Project Deadline",
+        "date": "2025-06-20",
+        "category": "red"
+    },
+    {
+        "title": "Hackathon",
+        "date": "2025-06-25",
+        "category": "purple"
+    }
+]
