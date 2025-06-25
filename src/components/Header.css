@@ -45,21 +45,19 @@ body {
 
 .month-year-chip-container {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
   margin: 0 16px;
 }
 
-.month-chip-scroll,
-.year-chip-scroll {
+.month-chip-scroll {
   display: flex;
-  overflow-x: auto;
   gap: 8px;
+  overflow-x: auto;
   scrollbar-width: none;
 }
 
-.month-chip-scroll::-webkit-scrollbar,
-.year-chip-scroll::-webkit-scrollbar {
+.month-chip-scroll::-webkit-scrollbar {
   display: none;
 }
 
@@ -79,6 +77,73 @@ body {
   background: linear-gradient(to right, #4f46e5, #3b82f6);
   color: #fff;
   font-weight: 500;
+}
+
+.year-display {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #e0e7ff;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #1d4ed8;
+  font-weight: 500;
+}
+
+.year-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.year-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.year-modal h3 {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.year-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.year-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #f3f4f6;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.year-item:hover {
+  background-color: #e0e7ff;
+}
+
+.year-item.active {
+  background: linear-gradient(to right, #4f46e5, #3b82f6);
+  color: white;
+  font-weight: bold;
 }
 
 .button {
