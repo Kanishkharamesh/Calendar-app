@@ -187,7 +187,7 @@ const Calendar = ({ currentMonth, events = [], openEventModal, currentView }) =>
                                         className="add-event-button"
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            openEventModal(dateObj);
+                                            openEventModal(date);
                                         }}
                                     >
                                         <FiPlus size={14} />
