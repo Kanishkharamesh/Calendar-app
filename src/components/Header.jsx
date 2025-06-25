@@ -133,7 +133,12 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
   const goToToday = () => setCurrentMonth(dayjs());
   const handleSearch = (e) => console.log("Search:", e.target.value);
 
-  const monthNames = dayjs.months();
+  // const monthNames = dayjs.months();
+  const monthNames = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
 
   const handleYearSelect = (year) => {
     setCurrentMonth(currentMonth.set("year", year));
