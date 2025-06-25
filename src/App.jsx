@@ -28,7 +28,6 @@ function App() {
     }
   }, []);
 
-  // Save new or updated event
   const saveEvent = (event) => {
     let updatedEvents;
 
