@@ -391,9 +391,16 @@ import "./EventModal.css";
     if (!dateValue) return alert("Date is required");
 
     // ✅ BLOCK PAST MONTH EVENT CREATION
-    if (dayjs(dateValue).isBefore(dayjs(), "month")) {
-      return alert("This month is completed. Please schedule for next year.");
+    // if (dayjs(dateValue).isBefore(dayjs(), "month")) {
+    //   return alert("This month is completed. Please schedule for next year.");
+    // }
+    const selected = dayjs(dateValue);
+    const today = dayjs();
+
+    if (selected.isBefore(today, "day") && selected.month() < today.month()) {
+      return alert("This month is already completed. Please schedule for next year.");
     }
+
 
     if (!duration) return alert("Duration is required");
     if (guestInput && !validateEmail(guestInput)) return alert("Invalid email format");
