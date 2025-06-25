@@ -24,7 +24,6 @@ import "./EventModal.css";
 
   useEffect(() => {
   if (existingEvent) {
-    // Populate for editing
     setTitle(existingEvent.title || "");
     setDescription(existingEvent.description || "");
     setDateValue(existingEvent.date || "");
