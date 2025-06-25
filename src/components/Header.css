@@ -43,76 +43,6 @@ body {
     flex-wrap: wrap;
 }
 
-.year-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* Darker backdrop */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* High z-index to appear above everything */
-  backdrop-filter: blur(3px);
-}
-
-.year-modal {
-  background: white;
-  border-radius: 12px;
-  padding: 16px 20px;
-  width: 220px;
-  max-height: 360px;
-  overflow-y: auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.2s ease-out;
-}
-
-.year-modal h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #1f2937;
-  text-align: center;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 6px;
-}
-
-.year-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-height: 280px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.year-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.year-list::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 8px;
-}
-
-.year-item {
-  padding: 8px;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.2s ease;
-  font-weight: 500;
-  color: #1f2937;
-}
-
-.year-item:hover {
-  background-color: #e0f2fe;
-}
-
-.year-item.active {
-  background: linear-gradient(to right, #6366f1, #3b82f6);
-  color: white;
-}
-
-
 .button {
     background: linear-gradient(to right, #60a5fa, #3b82f6);
     color: #ffffff;
@@ -285,15 +215,87 @@ body {
         max-width: 100%;
     }
 }
+.year-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* Slightly softened dark backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
 
-@keyframes fadeIn {
+.year-modal {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  width: 240px;
+  max-height: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  animation: fadeInModal 0.2s ease-out;
+}
+
+.year-modal h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 6px;
+}
+
+.year-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scroll-behavior: smooth;
+}
+
+.year-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.year-list::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+.year-item {
+  padding: 8px 12px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1f2937;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.year-item:hover {
+  background-color: #e0f2fe;
+}
+
+.year-item.active {
+  background: linear-gradient(to right, #6366f1, #3b82f6);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Animation for modal */
+@keyframes fadeInModal {
   from {
-    transform: translateY(-10px);
+    transform: scale(0.96);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: scale(1);
     opacity: 1;
   }
 }
-
