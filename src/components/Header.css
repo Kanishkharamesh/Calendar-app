@@ -220,12 +220,10 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 15px;
-  z-index: 2;
+  gap: 10px;
+  z-index: 5;
 }
 
-
-/* Stylish year button */
 .year-display {
   padding: 8px 16px;
   background: linear-gradient(to right, #60a5fa, #3b82f6);
@@ -239,12 +237,10 @@ body {
   transition: background 0.3s ease;
 }
 
-
 .year-display:hover {
   background: linear-gradient(to right, #2563eb, #1d4ed8);
 }
 
-/* Properly positioned dropdown */
 .year-popup {
   position: absolute;
   top: calc(100% + 8px);
@@ -267,7 +263,6 @@ body {
   isolation: isolate;
 }
 
-/* Year list styling */
 .year-list {
   display: flex;
   flex-direction: column;
@@ -306,7 +301,6 @@ body {
   font-weight: 600;
 }
 
-/* Smooth animation */
 @keyframes fadeInModal {
   from {
     transform: translateY(-5px);
