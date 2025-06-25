@@ -120,7 +120,6 @@
 
 // export default Header;
 
-
 import React from "react";
 import dayjs from "dayjs";
 import "./Header.css";
@@ -130,10 +129,14 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
   const goToPreviousMonth = () => setCurrentMonth(currentMonth.subtract(1, "month"));
   const goToNextMonth = () => setCurrentMonth(currentMonth.add(1, "month"));
   const goToToday = () => setCurrentMonth(dayjs());
-
   const handleSearch = (e) => {
     console.log("Search:", e.target.value);
   };
+
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
 
   return (
     <header className="calendar-header">
@@ -149,17 +152,16 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
             <FaChevronLeft />
           </button>
 
-          {/* MONTH + YEAR SELECTORS */}
+          {/* Month and Year Selectors */}
           <div className="month-year-selectors">
             <select
               className="month-select"
               value={currentMonth.month()}
-              onChange={(e) => {
-                const newMonth = parseInt(e.target.value);
-                setCurrentMonth(currentMonth.set("month", newMonth));
-              }}
+              onChange={(e) =>
+                setCurrentMonth(currentMonth.set("month", parseInt(e.target.value)))
+              }
             >
-              {dayjs.months().map((month, index) => (
+              {monthNames.map((month, index) => (
                 <option key={month} value={index}>
                   {month}
                 </option>
@@ -169,10 +171,9 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
             <select
               className="year-select"
               value={currentMonth.year()}
-              onChange={(e) => {
-                const newYear = parseInt(e.target.value);
-                setCurrentMonth(currentMonth.set("year", newYear));
-              }}
+              onChange={(e) =>
+                setCurrentMonth(currentMonth.set("year", parseInt(e.target.value)))
+              }
             >
               {Array.from({ length: 30 }, (_, i) => dayjs().year() - 10 + i).map((year) => (
                 <option key={year} value={year}>
@@ -190,12 +191,7 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
           >
             <FaChevronRight />
           </button>
-
-          <button
-            onClick={goToToday}
-            className="button"
-            aria-label="Go to Today"
-          >
+          <button onClick={goToToday} className="button" aria-label="Go to Today">
             Today
           </button>
         </nav>
@@ -228,7 +224,6 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
             </button>
           ))}
         </div>
-
         <div className="user-profile">
           <img
             src="https://i.pravatar.cc/36"
