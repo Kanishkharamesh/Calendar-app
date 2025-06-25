@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./EventModal.css";
+import dayjs from "dayjs";
+
 
 const EventModal = ({ onClose, onSave, onDelete, events, existingEvent = null }) => {
     const [title, setTitle] = useState("");
@@ -17,6 +19,9 @@ const EventModal = ({ onClose, onSave, onDelete, events, existingEvent = null })
     const [description, setDescription] = useState("");
     const [showDescription, setShowDescription] = useState(false);
     const [category, setCategory] = useState("blue");
+
+    const isPastMonth = dateValue && dayjs(dateValue).isBefore(dayjs(), 'month');
+
 
     useEffect(() => {
         if (existingEvent) {
@@ -129,6 +134,12 @@ const EventModal = ({ onClose, onSave, onDelete, events, existingEvent = null })
                     <button className="close-btn" onClick={onClose}>×</button>
                 </header>
                 <div className="modal-body">
+                    
+{isPastMonth && (
+    <div className="past-month-warning">
+      ⚠️ This month is already completed. Consider scheduling for next year.
+    </div>
+  )}
                     <div className="input-group">
                         <label>Title</label>
                         <div className="row between">
