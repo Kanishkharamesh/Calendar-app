@@ -216,87 +216,87 @@ body {
     }
 }
 
-.year-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35); /* Slightly softened dark backdrop */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  backdrop-filter: blur(4px);
+.year-display {
+  padding: 6px 12px;
+  background: linear-gradient(to right, #60a5fa, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
 }
 
-.year-modal {
-  background-color: #ffffff;
-  border-radius: 14px;
-  padding: 20px;
-  width: 240px;
-  max-height: 400px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  animation: fadeInModal 0.2s ease-out;
+.year-display:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
 }
 
-.year-modal h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 12px;
-  text-align: center;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 6px;
+.year-popup {
+  position: absolute;
+  top: 110%; /* Appears below button */
+  left: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  width: 200px;
+  max-height: 250px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  animation: fadeInModal 0.2s ease-out;
 }
 
 .year-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-height: 300px;
-  overflow-y: auto;
-  padding-right: 6px;
-  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scroll-behavior: smooth;
 }
 
 .year-list::-webkit-scrollbar {
-  width: 6px;
+  width: 6px;
 }
 
 .year-list::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border-radius: 4px;
+  background-color: #cbd5e1;
+  border-radius: 4px;
 }
 
 .year-item {
-  padding: 8px 12px;
-  text-align: center;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #1f2937;
-  background-color: #f9fafb;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  padding: 8px 12px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1f2937;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .year-item:hover {
-  background-color: #e0f2fe;
+  background-color: #e0f2fe;
 }
 
 .year-item.active {
-  background: linear-gradient(to right, #6366f1, #3b82f6);
-  color: #ffffff;
-  font-weight: 600;
+  background: linear-gradient(to right, #6366f1, #3b82f6);
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* Animation for modal */
 @keyframes fadeInModal {
-  from {
-    transform: scale(0.96);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
