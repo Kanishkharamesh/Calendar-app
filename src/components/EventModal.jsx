@@ -316,7 +316,9 @@ import "./EventModal.css";
   const [category, setCategory] = useState("blue");
 
   // const isPastMonth = dateValue && dayjs(dateValue).isBefore(dayjs(), "month"); // ✅ ADDED
-  const isPastMonth = dateValue && dayjs(dateValue).month() < dayjs().month() && dayjs(dateValue).year() <= dayjs().year();
+  // const isPastMonth = dateValue && dayjs(dateValue).month() < dayjs().month() && dayjs(dateValue).year() <= dayjs().year();
+  const isPastDate = dateValue && dayjs(dateValue).isBefore(dayjs(), 'day');
+
 
 
   // useEffect(() => {
@@ -396,12 +398,17 @@ import "./EventModal.css";
     // if (dayjs(dateValue).isBefore(dayjs(), "month")) {
     //   return alert("This month is completed. Please schedule for next year.");
     // }
-    const selected = dayjs(dateValue);
-    const today = dayjs();
+    // const selected = dayjs(dateValue);
+    // const today = dayjs();
 
-    if (selected.isBefore(today, "day") && selected.month() < today.month()) {
-      return alert("This month is already completed. Please schedule for next year.");
+    // if (selected.isBefore(today, "day") && selected.month() < today.month()) {
+    //   return alert("This month is already completed. Please schedule for next year.");
+    // }
+
+    if (dayjs(dateValue).isBefore(dayjs(), "day")) {
+      return alert("This date has already passed. Please select a future date.");
     }
+
 
 
     if (!duration) return alert("Duration is required");
@@ -482,11 +489,12 @@ import "./EventModal.css";
 
         <div className="modal-body">
 
-          {isPastMonth && (
+          {isPastDate && (
             <div className="past-month-warning">
-              ⚠️ This month is already completed. Consider scheduling for next year.
+              ⚠️ This date has already passed. Consider scheduling a future event.
             </div>
           )}
+
 
           <div className="input-group">
             <label>Title</label>
