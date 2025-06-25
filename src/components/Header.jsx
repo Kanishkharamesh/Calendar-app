@@ -262,12 +262,32 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
             <FaChevronLeft />
           </button>
 
-          <div className="month-year-chip-container">
-            <span className="month-label">{currentMonth.format("MMMM")}</span>
-            <button className="year-display" onClick={() => setShowYearModal(true)}>
-              {currentMonth.year()}
-            </button>
-          </div>
+          <div className="month-year-chip-container" style={{ position: "relative" }}>
+          <span className="month-label">{currentMonth.format("MMMM")}</span>
+          <button className="year-display" onClick={() => setShowYearModal(!showYearModal)}>
+            {currentMonth.year()}
+          </button>
+        
+          {showYearModal && (
+            <div className="year-popup">  {/* Not overlay, but popup now */}
+              <div className="year-list">
+                {Array.from({ length: 30 }, (_, i) => dayjs().year() - 10 + i).map((year) => (
+                  <div
+                    key={year}
+                    className={`year-item ${currentMonth.year() === year ? "active" : ""}`}
+                    onClick={() => {
+                      handleYearSelect(year);
+                      setShowYearModal(false);
+                    }}
+                  >
+                    {year}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
 
           <button onClick={goToNextMonth} className="button" aria-label="Next Month">
             <FaChevronRight />
