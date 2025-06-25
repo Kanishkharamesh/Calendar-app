@@ -27,7 +27,36 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
                         <FaChevronLeft />
                     </button>
 
-                    <span className="month-label">{currentMonth.format("MMMM YYYY")}</span>
+{/*                     <span className="month-label">{currentMonth.format("MMMM YYYY")}</span> */}
+        <div className="month-year-selectors">
+          <select
+            className="month-select"
+            value={currentMonth.month()}
+            onChange={(e) =>
+              setCurrentMonth(currentMonth.month(parseInt(e.target.value)))
+            }
+          >
+            {dayjs.months().map((month, index) => (
+              <option key={month} value={index}>
+                {month}
+              </option>
+            ))}
+          </select>
+        
+          <select
+            className="year-select"
+            value={currentMonth.year()}
+            onChange={(e) =>
+              setCurrentMonth(currentMonth.year(parseInt(e.target.value)))
+            }
+          >
+            {Array.from({ length: 30 }, (_, i) => dayjs().year() - 10 + i).map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+        </div>
 
                     <button
                         onClick={goToNextMonth}
