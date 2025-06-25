@@ -152,36 +152,30 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
             <FaChevronLeft />
           </button>
 
-          {/* Month and Year Selectors */}
-          <div className="month-year-selectors">
-            <select
-              className="month-select"
-              value={currentMonth.month()}
-              onChange={(e) =>
-                setCurrentMonth(currentMonth.set("month", parseInt(e.target.value)))
-              }
-            >
-              {monthNames.map((month, index) => (
-                <option key={month} value={index}>
-                  {month}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className="year-select"
-              value={currentMonth.year()}
-              onChange={(e) =>
-                setCurrentMonth(currentMonth.set("year", parseInt(e.target.value)))
-              }
-            >
-              {Array.from({ length: 30 }, (_, i) => dayjs().year() - 10 + i).map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
-          </div>
+          <div className="month-year-chip-container">
+                  <div className="month-chip-scroll">
+                    {monthNames.map((month, index) => (
+                      <button
+                        key={month}
+                        className={`chip-button ${currentMonth.month() === index ? "active" : ""}`}
+                        onClick={() => setCurrentMonth(currentMonth.set("month", index))}
+                      >
+                        {month.slice(0, 3)}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="year-chip-scroll">
+                    {Array.from({ length: 10 }, (_, i) => dayjs().year() - 5 + i).map((year) => (
+                      <button
+                        key={year}
+                        className={`chip-button ${currentMonth.year() === year ? "active" : ""}`}
+                        onClick={() => setCurrentMonth(currentMonth.set("year", year))}
+                      >
+                        {year}
+                      </button>
+                    ))}
+                  </div>
+            </div>
 
           <button
             onClick={goToNextMonth}
