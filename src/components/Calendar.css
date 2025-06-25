@@ -23,6 +23,9 @@ body {
   box-sizing: border-box;
   transition: all 0.3s ease;
   flex: 1;
+  height: auto;
+  overflow: visible; 
+  min-height: 100vh; 
 }
 
 .dashboard-sidebar {
