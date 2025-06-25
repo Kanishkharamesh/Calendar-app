@@ -215,6 +215,24 @@ body {
         max-width: 100%;
     }
 }
+
+.year-display {
+  padding: 6px 12px;
+  background: linear-gradient(to right, #60a5fa, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.year-display:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+}
+
 .year-modal-overlay {
   position: fixed;
   inset: 0;
