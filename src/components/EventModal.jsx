@@ -315,7 +315,9 @@ import "./EventModal.css";
   const [showDescription, setShowDescription] = useState(false);
   const [category, setCategory] = useState("blue");
 
-  const isPastMonth = dateValue && dayjs(dateValue).isBefore(dayjs(), "month"); // ✅ ADDED
+  // const isPastMonth = dateValue && dayjs(dateValue).isBefore(dayjs(), "month"); // ✅ ADDED
+  const isPastMonth = dateValue && dayjs(dateValue).month() < dayjs().month() && dayjs(dateValue).year() <= dayjs().year();
+
 
   // useEffect(() => {
   //   if (existingEvent) {
