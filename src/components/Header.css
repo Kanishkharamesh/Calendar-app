@@ -43,101 +43,75 @@ body {
     flex-wrap: wrap;
 }
 
-.month-year-chip-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 16px;
-}
-
-.month-chip-scroll {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.month-chip-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.chip-button {
-  padding: 6px 12px;
-  border-radius: 20px;
-  background-color: #f3f4f6;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  color: #333;
-  transition: background 0.2s ease;
-  white-space: nowrap;
-}
-
-.chip-button.active {
-  background: linear-gradient(to right, #4f46e5, #3b82f6);
-  color: #fff;
-  font-weight: 500;
-}
-
-.month-year-chip-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.month-label {
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-}
-
-.year-display {
-  padding: 6px 12px;
-  background: #f3f4f6;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
 .year-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4); /* Darker backdrop */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999; /* High z-index to appear above everything */
+  backdrop-filter: blur(3px);
 }
 
 .year-modal {
   background: white;
-  border-radius: 8px;
-  padding: 20px;
-  max-height: 60vh;
+  border-radius: 12px;
+  padding: 16px 20px;
+  width: 220px;
+  max-height: 360px;
   overflow-y: auto;
-  width: 240px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.year-modal h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1f2937;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 6px;
 }
 
 .year-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.year-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.year-list::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 8px;
 }
 
 .year-item {
-  padding: 8px 12px;
+  padding: 8px;
+  text-align: center;
   cursor: pointer;
   border-radius: 6px;
-  text-align: center;
+  transition: background 0.2s ease;
   font-weight: 500;
+  color: #1f2937;
+}
+
+.year-item:hover {
+  background-color: #e0f2fe;
 }
 
 .year-item.active {
-  background-color: #3b82f6;
+  background: linear-gradient(to right, #6366f1, #3b82f6);
   color: white;
 }
+
 
 .button {
     background: linear-gradient(to right, #60a5fa, #3b82f6);
@@ -311,3 +285,15 @@ body {
         max-width: 100%;
     }
 }
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
