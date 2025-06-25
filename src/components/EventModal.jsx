@@ -296,7 +296,9 @@ import React, { useState, useRef, useEffect } from "react";
 import dayjs from "dayjs"; // ✅ ADDED
 import "./EventModal.css";
 
-const EventModal = ({ onClose, onSave, onDelete, events, existingEvent = null }) => {
+// const EventModal = ({ onClose, onSave, onDelete, events, existingEvent = null }) => {
+  const EventModal = ({ onClose, onSave, onDelete, events, existingEvent = null, date }) => {
+
   const [title, setTitle] = useState("");
   const [startHour, setStartHour] = useState("02");
   const [startMinute, setStartMinute] = useState("00");
