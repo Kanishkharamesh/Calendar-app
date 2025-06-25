@@ -236,7 +236,7 @@ body {
 .year-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35); /* Slightly softened dark backdrop */
+  background: rgba(0, 0, 0, 0.35); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -244,6 +244,20 @@ body {
   backdrop-filter: blur(4px);
 }
 
+.year-popup {
+  position: absolute;
+  top: 110%; /* Appears below button */
+  left: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  width: 200px;
+  max-height: 250px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  animation: fadeInModal 0.2s ease-out;
+}
 .year-modal {
   background-color: #ffffff;
   border-radius: 14px;
