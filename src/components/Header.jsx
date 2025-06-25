@@ -381,7 +381,7 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
             <FaChevronLeft />
           </button>
 
-          <div className="month-year-chip-container" style={{ position: "relative" }}>
+{/*           <div className="month-year-chip-container" style={{ position: "relative" }}>
             <span className="month-label">{currentMonth.format("MMMM")}</span>
             <button className="year-display" onClick={() => setShowYearModal(!showYearModal)}>
               {currentMonth.year()}
@@ -402,7 +402,33 @@ const Header = ({ currentMonth, setCurrentMonth, currentView, setCurrentView, us
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
+                <div className="month-year-chip-container">
+                  <span className="month-label">{currentMonth.format("MMMM")}</span>
+                  <button className="year-display" onClick={() => setShowYearModal(!showYearModal)}>
+                    {currentMonth.year()}
+                  </button>
+                
+                  {showYearModal && (
+                    <div className="year-popup">
+                      <div className="year-list">
+                        {Array.from({ length: 30 }, (_, i) => dayjs().year() - 10 + i).map((year) => (
+                          <div
+                            key={year}
+                            className={`year-item ${currentMonth.year() === year ? "active" : ""}`}
+                            onClick={() => {
+                              handleYearSelect(year);
+                              setShowYearModal(false);
+                            }}
+                          >
+                            {year}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
 
           <button onClick={goToNextMonth} className="button" aria-label="Next Month">
             <FaChevronRight />
