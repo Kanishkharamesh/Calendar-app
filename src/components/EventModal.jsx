@@ -315,31 +315,65 @@ const EventModal = ({ onClose, onSave, onDelete, events, existingEvent = null })
 
   const isPastMonth = dateValue && dayjs(dateValue).isBefore(dayjs(), "month"); // ✅ ADDED
 
+  // useEffect(() => {
+  //   if (existingEvent) {
+  //     setTitle(existingEvent.title || "");
+  //     setDescription(existingEvent.description || "");
+  //     setDateValue(existingEvent.date || "");
+  //     setLocation(existingEvent.location || "");
+  //     setGuests(existingEvent.guests || []);
+  //     setNotification(existingEvent.notification || "Email");
+  //     setReminder(existingEvent.reminder || "1 hour before event");
+  //     setCategory(existingEvent.category || "blue");
+
+  //     const start = new Date(existingEvent.startDateTime);
+  //     let hour = start.getHours();
+  //     const minute = String(start.getMinutes()).padStart(2, "0");
+  //     const ampm = hour >= 12 ? "PM" : "AM";
+  //     hour = hour % 12 || 12;
+
+  //     setStartHour(String(hour).padStart(2, "0"));
+  //     setStartMinute(minute);
+  //     setStartAMPM(ampm);
+
+  //     const dur = Math.floor((new Date(existingEvent.endDateTime) - new Date(existingEvent.startDateTime)) / 60000);
+  //     setDuration(dur.toString());
+  //   }
+  // }, [existingEvent]);
+
   useEffect(() => {
-    if (existingEvent) {
-      setTitle(existingEvent.title || "");
-      setDescription(existingEvent.description || "");
-      setDateValue(existingEvent.date || "");
-      setLocation(existingEvent.location || "");
-      setGuests(existingEvent.guests || []);
-      setNotification(existingEvent.notification || "Email");
-      setReminder(existingEvent.reminder || "1 hour before event");
-      setCategory(existingEvent.category || "blue");
+  if (existingEvent) {
+    // Populate for editing
+    setTitle(existingEvent.title || "");
+    setDescription(existingEvent.description || "");
+    setDateValue(existingEvent.date || "");
+    setLocation(existingEvent.location || "");
+    setGuests(existingEvent.guests || []);
+    setNotification(existingEvent.notification || "Email");
+    setReminder(existingEvent.reminder || "1 hour before event");
+    setCategory(existingEvent.category || "blue");
 
-      const start = new Date(existingEvent.startDateTime);
-      let hour = start.getHours();
-      const minute = String(start.getMinutes()).padStart(2, "0");
-      const ampm = hour >= 12 ? "PM" : "AM";
-      hour = hour % 12 || 12;
+    const start = new Date(existingEvent.startDateTime);
+    let hour = start.getHours();
+    const minute = String(start.getMinutes()).padStart(2, "0");
+    const ampm = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12 || 12;
+    setStartHour(String(hour).padStart(2, "0"));
+    setStartMinute(minute);
+    setStartAMPM(ampm);
 
-      setStartHour(String(hour).padStart(2, "0"));
-      setStartMinute(minute);
-      setStartAMPM(ampm);
-
-      const dur = Math.floor((new Date(existingEvent.endDateTime) - new Date(existingEvent.startDateTime)) / 60000);
-      setDuration(dur.toString());
+    const dur = Math.floor(
+      (new Date(existingEvent.endDateTime) - new Date(existingEvent.startDateTime)) / 60000
+    );
+    setDuration(dur.toString());
+  } else {
+    // New Event → Set selected date from props
+    if (date && dayjs(date).isValid()) {
+      setDateValue(dayjs(date).format("YYYY-MM-DD"));
     }
-  }, [existingEvent]);
+  }
+}, [existingEvent, date]);
+
 
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
